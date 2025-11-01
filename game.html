@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Game - TopUp Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .game-header {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .game-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 1.5rem;
+        }
+        
+        .game-info h1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-info p {
+            color: #666;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .buy-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .game-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .game-image {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html" class="back-button">← Kembali</a>
+            <div class="logo">TopUpGames</div>
+            <div></div> <!-- placeholder untuk penyeimbang -->
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="game-header">
+            <img id="gameImage" src="" alt="Game" class="game-image">
+            <div class="game-info">
+                <h1 id="gameName">Nama Game</h1>
+                <p id="gameDescription">Deskripsi game akan ditampilkan di sini</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Pilih Nominal Top Up</h2>
+        <div class="products-grid" id="productsGrid">
+            <!-- Produk akan dimuat di sini -->
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2023 TopUpGames. Semua hak dilindungi.</p>
+    </footer>
+    
+    <script>
+        // Data game dan produk
+        const gameData = {
+            1: {
+                name: "Mobile Legends",
+                image: "https://upload.wikimedia.org/wikipedia/en/9/9a/Mobile_Legends_Bang_Bang_Logo.png",
+                description: "Top Up Diamond Mobile Legends",
+                products: [
+                    { id: 1, name: "86 Diamond", price: "Rp 20.000" },
+                    { id: 2, name: "172 Diamond", price: "Rp 40.000" },
+                    { id: 3, name: "257 Diamond", price: "Rp 60.000" },
+                    { id: 4, name: "344 Diamond", price: "Rp 80.000" },
+                    { id: 5, name: "429 Diamond", price: "Rp 100.000" },
+                    { id: 6, name: "514 Diamond", price: "Rp 120.000" }
+                ]
+            },
+            2: {
+                name: "Free Fire",
+                image: "https://upload.wikimedia.org/wikipedia/en/3/33/Garena_Free_Fire_Logo.jpg",
+                description: "Top Up Diamond Free Fire",
+                products: [
+                    { id: 7, name: "100 Diamond", price: "Rp 15.000" },
+                    { id: 8, name: "210 Diamond", price: "Rp 30.000" },
+                    { id: 9, name: "355 Diamond", price: "Rp 50.000" },
+                    { id: 10, name: "720 Diamond", price: "Rp 100.000" },
+                    { id: 11, name: "1450 Diamond", price: "Rp 200.000" },
+                    { id: 12, name: "3650 Diamond", price: "Rp 500.000" }
+                ]
+            }
+            // Tambahkan game lain sesuai kebutuhan
+        };
+        
+        // Fungsi untuk mendapatkan parameter URL
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return Object.fromEntries(urlParams.entries());
+        }
+        
+        // Fungsi untuk menampilkan detail game
+        function displayGameDetails() {
+            const params = getUrlParams();
+            const gameId = params.id;
+            const game = gameData[gameId];
+            
+            if (game) {
+                document.getElementById('gameImage').src = game.image;
+                document.getElementById('gameName').textContent = game.name;
+                document.getElementById('gameDescription').textContent = game.description;
+                
+                const productsGrid = document.getElementById('productsGrid');
+                productsGrid.innerHTML = '';
+                
+                game.products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">${product.price}</div>
+                        <button class="buy-button" data-product='${JSON.stringify(product)}' data-game='${JSON.stringify(game)}'>Beli Sekarang</button>
+                    `;
+                    productsGrid.appendChild(productCard);
+                });
+                
+                // Tambahkan event listener untuk tombol beli
+                document.querySelectorAll('.buy-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const product = JSON.parse(this.getAttribute('data-product'));
+                        const game = JSON.parse(this.getAttribute('data-game'));
+                        window.location.href = `order.html?game=${encodeURIComponent(game.name)}&product=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}`;
+                    });
+                });
+            } else {
+                document.querySelector('.container').innerHTML = '<h2>Game tidak ditemukan</h2>';
+            }
+        }
+        
+        // Panggil fungsi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', displayGameDetails);
+    </script>
+</body>
+</html>
