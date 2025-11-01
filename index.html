@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopUp Games - Murah dan Cepat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 1rem;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .game-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .game-name {
+            padding: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+            }
+            
+            .search-bar {
+                margin: 1rem 0;
+                width: 100%;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">TopUpGames</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari game...">
+            </div>
+            <div class="nav-links">
+                <a href="#" style="color: white; text-decoration: none;">Beranda</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Top Up Game Mudah & Cepat</h1>
+            <p>Isi diamond, koin, atau voucher game favorit Anda dengan harga terbaik</p>
+        </section>
+        
+        <h2 class="section-title">Game Populer</h2>
+        <div class="games-grid" id="gamesGrid">
+            <!-- Game akan dimuat di sini -->
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2023 TopUpGames. Semua hak dilindungi.</p>
+    </footer>
+    
+    <script>
+        // Data game contoh
+        const games = [
+            { id: 1, name: "Mobile Legends", image: "https://upload.wikimedia.org/wikipedia/en/9/9a/Mobile_Legends_Bang_Bang_Logo.png" },
+            { id: 2, name: "Free Fire", image: "https://upload.wikimedia.org/wikipedia/en/3/33/Garena_Free_Fire_Logo.jpg" },
+            { id: 3, name: "PUBG Mobile", image: "https://upload.wikimedia.org/wikipedia/en/3/3d/PUBG_Mobile_Steam_Logo.jpg" },
+            { id: 4, name: "Genshin Impact", image: "https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg" },
+            { id: 5, name: "Valorant", image: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg" },
+            { id: 6, name: "Call of Duty Mobile", image: "https://upload.wikimedia.org/wikipedia/en/2/22/Call_of_Duty_Mobile_logo.png" }
+        ];
+        
+        // Fungsi untuk menampilkan game
+        function displayGames() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            gamesGrid.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <img src="${game.image}" alt="${game.name}" class="game-image">
+                    <div class="game-name">${game.name}</div>
+                `;
+                gameCard.addEventListener('click', () => {
+                    window.location.href = `game.html?id=${game.id}`;
+                });
+                gamesGrid.appendChild(gameCard);
+            });
+        }
+        
+        // Panggil fungsi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', displayGames);
+    </script>
+</body>
+</html>
