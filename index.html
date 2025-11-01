@@ -718,4 +718,180 @@
                     </div>
                 </div>
                 
-              
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo 2" class="promo-image">
+                    <div class="promo-content">
+                        <h3 class="promo-title">Bonus Diamond 10% Setiap Hari</h3>
+                        <p class="promo-desc">Dapatkan bonus diamond 10% untuk pembelian Mobile Legends setiap hari</p>
+                        <div class="promo-code">MLBB10</div>
+                        <a href="#" class="btn btn-primary">Klaim Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo 3" class="promo-image">
+                    <div class="promo-content">
+                        <h3 class="promo-title">Gratis Voucher Spotify 3 Bulan</h3>
+                        <p class="promo-desc">Dapatkan voucher Spotify gratis 3 bulan untuk pembelian di atas Rp 100.000</p>
+                        <div class="promo-code">SPOTIFY3</div>
+                        <a href="#" class="btn btn-primary">Klaim Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TopUpGames</h3>
+                <p>Platform top up game terpercaya dengan harga termurah dan proses tercepat di Indonesia.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Layanan</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Top Up Game</a></li>
+                    <li><a href="#">Voucher Game</a></li>
+                    <li><a href="#">Item Game</a></li>
+                    <li><a href="#">Akun Game</a></li>
+                    <li><a href="#">Promo Spesial</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Bantuan</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Cara Pembelian</a></li>
+                    <li><a href="#">Pembayaran</a></li>
+                    <li><a href="#">Status Pesanan</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Perusahaan</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 TopUpGames. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Data game
+        const games = [
+            { 
+                id: 1, 
+                name: "Mobile Legends", 
+                category: "MOBA", 
+                image: "https://upload.wikimedia.org/wikipedia/en/9/9a/Mobile_Legends_Bang_Bang_Logo.png",
+                price: "Rp 20.000"
+            },
+            { 
+                id: 2, 
+                name: "Free Fire", 
+                category: "Battle Royale", 
+                image: "https://upload.wikimedia.org/wikipedia/en/3/33/Garena_Free_Fire_Logo.jpg",
+                price: "Rp 15.000"
+            },
+            { 
+                id: 3, 
+                name: "PUBG Mobile", 
+                category: "Battle Royale", 
+                image: "https://upload.wikimedia.org/wikipedia/en/3/3d/PUBG_Mobile_Steam_Logo.jpg",
+                price: "Rp 18.000"
+            },
+            { 
+                id: 4, 
+                name: "Genshin Impact", 
+                category: "RPG", 
+                image: "https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg",
+                price: "Rp 25.000"
+            },
+            { 
+                id: 5, 
+                name: "Valorant", 
+                category: "FPS", 
+                image: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
+                price: "Rp 30.000"
+            },
+            { 
+                id: 6, 
+                name: "Call of Duty Mobile", 
+                category: "FPS", 
+                image: "https://upload.wikimedia.org/wikipedia/en/2/22/Call_of_Duty_Mobile_logo.png",
+                price: "Rp 22.000"
+            },
+            { 
+                id: 7, 
+                name: "Clash of Clans", 
+                category: "Strategy", 
+                image: "https://upload.wikimedia.org/wikipedia/en/8/8c/Clash_of_Clans_logo.png",
+                price: "Rp 15.000"
+            },
+            { 
+                id: 8, 
+                name: "Apex Legends Mobile", 
+                category: "Battle Royale", 
+                image: "https://upload.wikimedia.org/wikipedia/en/d/db/Apex_legends_cover.jpg",
+                price: "Rp 28.000"
+            }
+        ];
+        
+        // Function to display games
+        function displayGames() {
+            const gamesGrid = document.querySelector('.games-grid');
+            gamesGrid.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = document.createElement('a');
+                gameCard.href = `game.html?id=${game.id}`;
+                gameCard.className = 'game-card';
+                gameCard.innerHTML = `
+                    <img src="${game.image}" alt="${game.name}" class="game-image">
+                    <div class="game-info">
+                        <div class="game-name">${game.name}</div>
+                        <div class="game-category">${game.category}</div>
+                        <div class="game-price">Mulai ${game.price}</div>
+                    </div>
+                `;
+                gamesGrid.appendChild(gameCard);
+            });
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayGames();
+            
+            // Add scroll animation to category cards
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                category.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
